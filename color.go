@@ -1,11 +1,6 @@
 // color.go: Color API and implementation
 package pp
 
-import (
-	"fmt"
-	"reflect"
-)
-
 const (
 	// No color
 	NoColor uint16 = 1 << 15
@@ -87,39 +82,6 @@ var (
 	}
 )
 
-func (cs *ColorScheme) fixColors() {
-	typ := reflect.Indirect(reflect.ValueOf(cs))
-	defaultType := reflect.ValueOf(defaultScheme)
-	for i := 0; i < typ.NumField(); i++ {
-		field := typ.Field(i)
-		if field.Uint() == 0 {
-			field.SetUint(defaultType.Field(i).Uint())
-		}
-	}
-}
+func (cs *ColorScheme) fixColors() { _ = "STUB: not implemented"; return }
 
-func colorizeText(text string, color uint16) string {
-	foreground := color & maskForeground >> bitsForeground
-	background := color & maskBackground >> bitsBackground
-	bold := color & maskBold
-
-	if foreground == 0 && background == 0 && bold == 0 {
-		return text
-	}
-
-	modBold := ""
-	modForeground := ""
-	modBackground := ""
-
-	if bold > 0 {
-		modBold = "\033[1m"
-	}
-	if foreground > 0 {
-		modForeground = fmt.Sprintf("\033[%dm", foreground+ansiForegroundOffset)
-	}
-	if background > 0 {
-		modBackground = fmt.Sprintf("\033[%dm", background+ansiBackgroundOffset)
-	}
-
-	return fmt.Sprintf("%s%s%s%s\033[0m", modForeground, modBackground, modBold, text)
-}
+func colorizeText(text string, color uint16) string { _ = "STUB: not implemented"; return "" }

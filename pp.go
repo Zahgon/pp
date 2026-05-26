@@ -2,11 +2,7 @@
 package pp
 
 import (
-	"errors"
-	"fmt"
 	"io"
-	"os"
-	"runtime"
 	"sync"
 
 	"github.com/mattn/go-colorable"
@@ -55,252 +51,179 @@ type PrettyPrinter struct {
 }
 
 // New creates a new PrettyPrinter that can be used to pretty print values
-func New() *PrettyPrinter {
-	return newPrettyPrinter(2) // PrettyPrinter.* => formatAll
-}
+func New() *PrettyPrinter { _ = "STUB: not implemented"; return nil }
 
-func newPrettyPrinter(callerLevel int) *PrettyPrinter {
-	return &PrettyPrinter{
-		WithLineInfo:    defaultWithLineInfo,
-		callerLevel:     callerLevel,
-		out:             defaultOut,
-		currentScheme:   defaultScheme,
-		maxDepth:        -1,
-		coloringEnabled: true,
-		decimalUint:     true,
-		exportedOnly:    false,
-		omitEmpty:       false,
-	}
-}
+// PrettyPrinter.* => formatAll
+
+func newPrettyPrinter(callerLevel int) *PrettyPrinter { _ = "STUB: not implemented"; return nil }
 
 // adjustFormat adjust format, if print line.
-func adjustFormat(format string, withLine bool) string {
-	if withLine {
-		format = "%s" + format
-	}
-	return format
-}
+func adjustFormat(format string, withLine bool) string { _ = "STUB: not implemented"; return "" }
 
 // Print prints given arguments.
 func (pp *PrettyPrinter) Print(a ...interface{}) (n int, err error) {
-	return fmt.Fprint(pp.out, pp.formatAll(a)...)
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 // Printf prints a given format.
 func (pp *PrettyPrinter) Printf(format string, a ...interface{}) (n int, err error) {
-	args, withLine := pp.formatAllWithLineFlag(a)
-	return fmt.Fprintf(pp.out, adjustFormat(format, withLine), args...)
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 // Println prints given arguments with newline.
 func (pp *PrettyPrinter) Println(a ...interface{}) (n int, err error) {
-	return fmt.Fprintln(pp.out, pp.formatAll(a)...)
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 // Sprint formats given arguments and returns the result as string.
-func (pp *PrettyPrinter) Sprint(a ...interface{}) string {
-	return fmt.Sprint(pp.formatAll(a)...)
-}
+func (pp *PrettyPrinter) Sprint(a ...interface{}) string { _ = "STUB: not implemented"; return "" }
 
 // Sprintf formats with pretty print and returns the result as string.
 func (pp *PrettyPrinter) Sprintf(format string, a ...interface{}) string {
-	args, withLine := pp.formatAllWithLineFlag(a)
-	return fmt.Sprintf(adjustFormat(format, withLine), args...)
+	_ = "STUB: not implemented"
+	return ""
 }
 
 // Sprintln formats given arguments with newline and returns the result as string.
-func (pp *PrettyPrinter) Sprintln(a ...interface{}) string {
-	return fmt.Sprintln(pp.formatAll(a)...)
-}
+func (pp *PrettyPrinter) Sprintln(a ...interface{}) string { _ = "STUB: not implemented"; return "" }
 
 // Fprint prints given arguments to a given writer.
 func (pp *PrettyPrinter) Fprint(w io.Writer, a ...interface{}) (n int, err error) {
-	return fmt.Fprint(w, pp.formatAll(a)...)
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 // Fprintf prints format to a given writer.
 func (pp *PrettyPrinter) Fprintf(w io.Writer, format string, a ...interface{}) (n int, err error) {
-	args, withLine := pp.formatAllWithLineFlag(a)
-	return fmt.Fprintf(w, adjustFormat(format, withLine), args...)
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 // Fprintln prints given arguments to a given writer with newline.
 func (pp *PrettyPrinter) Fprintln(w io.Writer, a ...interface{}) (n int, err error) {
-	return fmt.Fprintln(w, pp.formatAll(a)...)
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 // Errorf formats given arguments and returns it as error type.
 func (pp *PrettyPrinter) Errorf(format string, a ...interface{}) error {
-	args, withLine := pp.formatAllWithLineFlag(a)
-	return errors.New(pp.Sprintf(adjustFormat(format, withLine), args...))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Fatal prints given arguments and finishes execution with exit status 1.
-func (pp *PrettyPrinter) Fatal(a ...interface{}) {
-	fmt.Fprint(pp.out, pp.formatAll(a)...)
-	os.Exit(1)
-}
+func (pp *PrettyPrinter) Fatal(a ...interface{}) { _ = "STUB: not implemented"; return }
 
 // Fatalf prints a given format and finishes execution with exit status 1.
-func (pp *PrettyPrinter) Fatalf(format string, a ...interface{}) {
-	args, withLine := pp.formatAllWithLineFlag(a)
-	fmt.Fprintf(pp.out, adjustFormat(format, withLine), args...)
-	os.Exit(1)
-}
+func (pp *PrettyPrinter) Fatalf(format string, a ...interface{}) { _ = "STUB: not implemented"; return }
 
 // Fatalln prints given arguments with newline and finishes execution with exit status 1.
-func (pp *PrettyPrinter) Fatalln(a ...interface{}) {
-	fmt.Fprintln(pp.out, pp.formatAll(a)...)
-	os.Exit(1)
-}
+func (pp *PrettyPrinter) Fatalln(a ...interface{}) { _ = "STUB: not implemented"; return }
 
-func (pp *PrettyPrinter) SetColoringEnabled(enabled bool) {
-	pp.coloringEnabled = enabled
-}
+func (pp *PrettyPrinter) SetColoringEnabled(enabled bool) { _ = "STUB: not implemented"; return }
 
-func (pp *PrettyPrinter) SetDecimalUint(enabled bool) {
-	pp.decimalUint = enabled
-}
+func (pp *PrettyPrinter) SetDecimalUint(enabled bool) { _ = "STUB: not implemented"; return }
 
-func (pp *PrettyPrinter) SetExportedOnly(enabled bool) {
-	pp.exportedOnly = enabled
-}
+func (pp *PrettyPrinter) SetExportedOnly(enabled bool) { _ = "STUB: not implemented"; return }
 
 // SetOmitEmpty makes empty fields in struct not be printed.
-func (pp *PrettyPrinter) SetOmitEmpty(enabled bool) {
-	pp.omitEmpty = enabled
-}
+func (pp *PrettyPrinter) SetOmitEmpty(enabled bool) { _ = "STUB: not implemented"; return }
 
-func (pp *PrettyPrinter) SetThousandsSeparator(enabled bool) {
-	pp.thousandsSeparator = enabled
-}
+func (pp *PrettyPrinter) SetThousandsSeparator(enabled bool) { _ = "STUB: not implemented"; return }
 
 // SetOutput sets pp's output
-func (pp *PrettyPrinter) SetOutput(o io.Writer) {
-	pp.outLock.Lock()
-	defer pp.outLock.Unlock()
-
-	pp.out = o
-}
+func (pp *PrettyPrinter) SetOutput(o io.Writer) { _ = "STUB: not implemented"; return }
 
 // GetOutput returns pp's output.
 func (pp *PrettyPrinter) GetOutput() io.Writer {
-	return pp.out
+	_ = "STUB: not implemented"
+
+	// ResetOutput sets pp's output back to the default output
+	return *new(io.Writer)
 }
 
-// ResetOutput sets pp's output back to the default output
-func (pp *PrettyPrinter) ResetOutput() {
-	pp.outLock.Lock()
-	defer pp.outLock.Unlock()
-
-	pp.out = defaultOut
-}
+func (pp *PrettyPrinter) ResetOutput() { _ = "STUB: not implemented"; return }
 
 // SetColorScheme takes a colorscheme used by all future Print calls.
-func (pp *PrettyPrinter) SetColorScheme(scheme ColorScheme) {
-	scheme.fixColors()
-	pp.currentScheme = scheme
-}
+func (pp *PrettyPrinter) SetColorScheme(scheme ColorScheme) { _ = "STUB: not implemented"; return }
 
 // ResetColorScheme resets colorscheme to default.
-func (pp *PrettyPrinter) ResetColorScheme() {
-	pp.currentScheme = defaultScheme
-}
+func (pp *PrettyPrinter) ResetColorScheme() { _ = "STUB: not implemented"; return }
 
 // SetMaxDepth sets the printer's Depth, -1 prints all
-func (pp *PrettyPrinter) SetMaxDepth(v int) {
-	pp.maxDepth = v
-}
+func (pp *PrettyPrinter) SetMaxDepth(v int) { _ = "STUB: not implemented"; return }
 
 func (pp *PrettyPrinter) formatAll(objects []interface{}) []interface{} {
-	args, _ := pp.formatAllWithLineFlag(objects)
-	return args
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (pp *PrettyPrinter) formatAllWithLineFlag(objects []interface{}) ([]interface{}, bool) {
-	results := []interface{}{}
+	_ = "STUB: not implemented"
+	return nil,
 
-	// fix for backwards capability
-	withLineInfo := pp.WithLineInfo
-	if pp == Default {
-		withLineInfo = WithLineInfo
-	}
-
-	if withLineInfo {
-		_, fn, line, _ := runtime.Caller(pp.callerLevel)
-		results = append(results, fmt.Sprintf("%s:%d\n", fn, line))
-	}
-
-	for _, object := range objects {
-		results = append(results, pp.format(object))
-	}
-	return results, withLineInfo
+		// fix for backwards capability
+		false
 }
 
 // Print prints given arguments.
 func Print(a ...interface{}) (n int, err error) {
-	return Default.Print(a...)
+	_ = "STUB: not implemented"
+	return 0,
+
+		// Printf prints a given format.
+		nil
 }
 
-// Printf prints a given format.
 func Printf(format string, a ...interface{}) (n int, err error) {
-	return Default.Printf(format, a...)
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 // Println prints given arguments with newline.
-func Println(a ...interface{}) (n int, err error) {
-	return Default.Println(a...)
-}
+func Println(a ...interface{}) (n int, err error) { _ = "STUB: not implemented"; return 0, nil }
 
 // Sprint formats given arguments and returns the result as string.
-func Sprint(a ...interface{}) string {
-	return Default.Sprint(a...)
-}
+func Sprint(a ...interface{}) string { _ = "STUB: not implemented"; return "" }
 
 // Sprintf formats with pretty print and returns the result as string.
-func Sprintf(format string, a ...interface{}) string {
-	return Default.Sprintf(format, a...)
-}
+func Sprintf(format string, a ...interface{}) string { _ = "STUB: not implemented"; return "" }
 
 // Sprintln formats given arguments with newline and returns the result as string.
-func Sprintln(a ...interface{}) string {
-	return Default.Sprintln(a...)
-}
+func Sprintln(a ...interface{}) string { _ = "STUB: not implemented"; return "" }
 
 // Fprint prints given arguments to a given writer.
 func Fprint(w io.Writer, a ...interface{}) (n int, err error) {
-	return Default.Fprint(w, a...)
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 // Fprintf prints format to a given writer.
 func Fprintf(w io.Writer, format string, a ...interface{}) (n int, err error) {
-	return Default.Fprintf(w, format, a...)
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 // Fprintln prints given arguments to a given writer with newline.
 func Fprintln(w io.Writer, a ...interface{}) (n int, err error) {
-	return Default.Fprintln(w, a...)
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 // Errorf formats given arguments and returns it as error type.
-func Errorf(format string, a ...interface{}) error {
-	return Default.Errorf(format, a...)
-}
+func Errorf(format string, a ...interface{}) error { _ = "STUB: not implemented"; return nil }
 
 // Fatal prints given arguments and finishes execution with exit status 1.
-func Fatal(a ...interface{}) {
-	Default.Fatal(a...)
-}
+func Fatal(a ...interface{}) { _ = "STUB: not implemented"; return }
 
 // Fatalf prints a given format and finishes execution with exit status 1.
-func Fatalf(format string, a ...interface{}) {
-	Default.Fatalf(format, a...)
-}
+func Fatalf(format string, a ...interface{}) { _ = "STUB: not implemented"; return }
 
 // Fatalln prints given arguments with newline and finishes execution with exit status 1.
-func Fatalln(a ...interface{}) {
-	Default.Fatalln(a...)
-}
+func Fatalln(a ...interface{}) { _ = "STUB: not implemented"; return }
 
 // Change Print* functions' output to a given writer.
 // For example, you can limit output by ENV.
@@ -310,31 +233,19 @@ func Fatalln(a ...interface{}) {
 //			pp.SetDefaultOutput(ioutil.Discard)
 //		}
 //	}
-func SetDefaultOutput(o io.Writer) {
-	Default.SetOutput(o)
-}
+func SetDefaultOutput(o io.Writer) { _ = "STUB: not implemented"; return }
 
 // GetOutput returns pp's default output.
-func GetDefaultOutput() io.Writer {
-	return Default.GetOutput()
-}
+func GetDefaultOutput() io.Writer { _ = "STUB: not implemented"; return *new(io.Writer) }
 
 // Change Print* functions' output to default one.
-func ResetDefaultOutput() {
-	Default.ResetOutput()
-}
+func ResetDefaultOutput() { _ = "STUB: not implemented"; return }
 
 // SetColorScheme takes a colorscheme used by all future Print calls.
-func SetColorScheme(scheme ColorScheme) {
-	Default.SetColorScheme(scheme)
-}
+func SetColorScheme(scheme ColorScheme) { _ = "STUB: not implemented"; return }
 
 // ResetColorScheme resets colorscheme to default.
-func ResetColorScheme() {
-	Default.ResetColorScheme()
-}
+func ResetColorScheme() { _ = "STUB: not implemented"; return }
 
 // SetMaxDepth sets the printer's Depth, -1 prints all
-func SetDefaultMaxDepth(v int) {
-	Default.SetMaxDepth(v)
-}
+func SetDefaultMaxDepth(v int) { _ = "STUB: not implemented"; return }
